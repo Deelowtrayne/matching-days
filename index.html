@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>tetsr</title>
+
+  <style media="screen">
+    .firstDate {
+      background: crimson;
+    }
+
+    .secondDate {
+      background: blue;
+    }
+
+    .matchingDays {
+      background: green;
+    }
+  </style>
+
+  <script type="text/x-template" class="weekday-template">
+    <div class="weekday {{dayClass}}" id="tuesday">{{day}}</div>
+  </script>
+
+</head>
+
+<body>
+
+  <div class="weekday-display">
+    <div class="weekday" id="monday">Monday</div>
+    <div class="weekday" id="tuesday">Tuesday</div>
+    <div class="weekday" id="wednesday">Wednesday</div>
+    <div class="weekday" id="thursday">Thursday</div>
+    <div class="weekday" id="friday">Friday</div>
+    <div class="weekday" id="saturday">Saturday</div>
+    <div class="weekday" id="sunday">Sunday</div>
+  </div>
+
+  <input type="date" class="date-1">
+  <input type="date" class="date-2">
+
+
+  <script type="text/javascript">
+    var d1 = document.querySelector('.date-1')
+    var d2 = document.querySelector('.date-2')
+
+
+    function MatchingDays() {
+
+      const WEEKDAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+      var date1 = '';
+      var date2 = '';
+
+      function getDay1(value) {
+        date1 = value;
+        console.log(value);
+        let date = new Date(date1);
+        return WEEKDAYS[date.getDay()];
+      }
+
+      function getDay2(value) {
+        date2 = value;
+        console.log(date2);
+        let date = new Date(date2);
+        return WEEKDAYS[date.getDay()];
+      }
+
+      function sameWeekDay() {
+        if (date1 !== undefined && date2 !== undefined) {
+          first = new Date(date1);
+          second = new Date(date2);
+          return first.getDay() == second.getDay();
+        }
+        return false;
+      }
+
+      return {
+        day1: getDay1,
+        day2: getDay2,
+        match: sameWeekDay
+      }
+    }
+
+    var matchingDays = MatchingDays();
+
+    // function changeColor {
+    //
+    // }
+    d1.addEventListener('change', function() {
+      var days = document.querySelectorAll('.weekday');
+      var firstDate = matchingDays.day1(d1.value);
+      var secondDate = matchingDays.day2(d2.value);
+
+      for (let i = 0; i < days.length; i++) {
+        // Remove styles
+        days[i].classList.remove('firstDate', 'matchingDays');
+        if (days[i].innerHTML == firstDate) {
+          // add style for first date
+          days[i].classList.add('firstDate');
+
+          if (matchingDays.match(firstDate, secondDate) ) {
+            // add style for matching date
+            days[i].classList.remove('matchingDays');
+            days[i].classList.add('matchingDays');
+          }
+        }
+      }
+    });
+
+    d2.addEventListener('change', function(){
+      var days = document.querySelectorAll('.weekday');
+      var firstDate = matchingDays.day1(d1.value);
+      var secondDate = matchingDays.day2(d2.value);
+
+      for (let i = 0; i < days.length; i++) {
+        // Remove styles
+        days[i].classList.remove('secondDate', 'matchingDays');
+        if (days[i].innerHTML == secondDate) {
+          // add style for first date
+          days[i].classList.add('secondDate');
+
+          if (matchingDays.match(firstDate, secondDate) ) {
+            // add style for matching date
+            days[i].classList.remove('matchingDays');
+            days[i].classList.add('matchingDays');
+          }
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>
