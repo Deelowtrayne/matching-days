@@ -99,7 +99,7 @@
           // add style for first date
           days[i].classList.add('firstDate');
 
-          if (matchingDays.match(firstDate, secondDate) ) {
+          if (matchingDays.match(firstDate, secondDate)) {
             // add style for matching date
             days[i].classList.remove('matchingDays');
             days[i].classList.add('matchingDays');
@@ -108,7 +108,7 @@
       }
     });
 
-    d2.addEventListener('change', function(){
+    d2.addEventListener('change', function() {
       var days = document.querySelectorAll('.weekday');
       var firstDate = matchingDays.day1(d1.value);
       var secondDate = matchingDays.day2(d2.value);
@@ -120,7 +120,7 @@
           // add style for first date
           days[i].classList.add('secondDate');
 
-          if (matchingDays.match(firstDate, secondDate) ) {
+          if (matchingDays.match(firstDate, secondDate)) {
             // add style for matching date
             days[i].classList.remove('matchingDays');
             days[i].classList.add('matchingDays');
