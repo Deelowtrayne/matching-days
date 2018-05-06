@@ -1,0 +1,84 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Helvetica, sans-serif;
+}
+
+.container {
+  max-width: 920px;
+  margin: 0 auto;
+}
+
+.topbar {
+  padding: 1rem;
+  text-align: center;
+}
+
+.weekday-display {
+  padding: 0;
+  margin: auto;
+  width: fit-content;
+  list-style: none;
+  margin-bottom: 2rem;
+}
+
+.weekday-display:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.weekday {
+  float: left;
+  padding: 1rem;
+  font-size: small;
+  border: 1px solid #F0F0F1;
+}
+
+.weekday:first-of-type {
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+}
+
+.weekday:last-of-type {
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+
+.red, .blue, .green {
+  color: #fff;
+  font-weight: bold;
+  padding: 1.3rem;
+  margin-top: -0.3rem;
+  border: none;
+  box-shadow: 0px 2px 3px #ccc;
+}
+
+.red {
+  background: crimson;
+}
+
+.blue {
+  background: rgb(22, 94, 189);
+}
+
+.green {
+  background: green;
+}
+
+.date-inputs {
+  text-align: center;
+}
+
+.date-inputs input {
+  padding: 0.8rem;
+  font-size: large;
+  font-weight: bold;
+  border: 1px #F0F0F1 solid;
+}
+
+.date1:hover,.date2:hover {
+  border: 1px rgba(240, 240, 241, 1) solid;
+}

@@ -3,47 +3,40 @@
 
 <head>
   <meta charset="utf-8">
-  <title>tetsr</title>
+  <title>Matching Days| A simple Handlebars application that highlights the weekdays of two user-selected dates</title>
 
-  <style media="screen">
-    .red {
-      background: crimson;
-    }
-
-    .blue {
-      background: blue;
-    }
-
-    .green {
-      background: green;
-    }
-  </style>
+  <link rel="stylesheet" href="css/styles.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
-
-  <script type="text/x-template" class="weekday-template">
-    {{#each weekdays}}
-    <div class="weekday
-      {{#if first}}
-        {{first}}
-      {{else if second}}
-        {{second}}
-    {{else if sameDay}}
-      {{sameDay}}
-    {{/if}}" id="{{@key}}">{{dayName}}</div>
-    {{/each}}
-  </script>
 </head>
 
 <body>
-
-  <div class="weekday-display">
-
+  <div class="container">
+    <div class="topbar">
+      <h1>Matching Days App</h1>
+    </div>
+    <!-- weekday list display -->
+    <ul class="weekday-display">
+      <script type="text/x-template" class="weekday-template">
+        {{#each weekdays}}
+        <li class="weekday
+          {{#if first}}
+            {{first}}
+          {{else if second}}
+            {{second}}
+        {{else if sameDay}}
+          {{sameDay}}
+        {{/if}}" id="{{@key}}">{{dayName}}</li>
+        {{/each}}
+      </script>
+    </ul>
+    <!-- date input elements -->
+    <div class="date-inputs">
+      <input type="date" class="date-1">
+      <input type="date" class="date-2">
+    </div>
   </div>
 
-  <input type="date" class="date-1">
-  <input type="date" class="date-2">
-
-
+  <!-- Javascript references -->
   <script src="js/matching-days.js" type="text/javascript"></script>
   <script src="js/matching-days.dom.js" type="text/javascript"></script>
 </body>
