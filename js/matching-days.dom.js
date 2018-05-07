@@ -27,18 +27,5 @@ dayTwoElem.addEventListener('change', function() {
 });
 
 window.addEventListener('load', function() {
-  var context = {}
-
-  for (let i = 0; i < matchingDays.weekdays.length; i++) {
-    let current = matchingDays.weekdays[i];
-
-    context[current] = {
-      dayId: current,
-      dayName: current
-      // first:   // true or false,
-      // second:  // true or false,
-      // sameDay: // true or false
-    }
-  }
-  displayElem.innerHTML = DAY_TEMPLATE({weekdays: context});
+  displayElem.innerHTML = DAY_TEMPLATE({weekdays: matchingDays.context()});
 });
