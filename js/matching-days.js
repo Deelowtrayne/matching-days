@@ -33,9 +33,9 @@ function MatchingDays() {
     function createContext(dayOne, dayTwo){
 
         var context = {};
-        console.log(dayOne);
+        console.log(dayTwo);
         
-        if (dayOne !== undefined && dayTwo !== undefined) {
+        if (dayOne !== undefined || dayTwo !== undefined) {
             for (let i = 0; i < WEEKDAYS.length; i++) {
                 let current = WEEKDAYS[i];
                 context[current] = {
@@ -51,7 +51,7 @@ function MatchingDays() {
                         context[current] = Object.assign({'sameDay': 'green'}, context[current]);
                     }
                 } else if (current === dayTwo) {
-                    // add style for first date
+                    // add style for second date
                     context[current] = Object.assign({'second': 'blue'}, context[current]);
                     if (sameWeekDay()) {
                         // add style for matching date
