@@ -15,7 +15,7 @@ var matchingDays = MatchingDays();
 dayOneElem.addEventListener('change', function() {
   var firstDate = matchingDays.day1(dayOneElem.value);
   var secondDate = matchingDays.day2();
-  
+
   displayElem.innerHTML = DAY_TEMPLATE({
     weekdays:matchingDays.context(firstDate, secondDate)
   });
@@ -25,9 +25,13 @@ dayTwoElem.addEventListener('change', function() {
   var firstDate = matchingDays.day1(/*dayOneElem.value*/);
   var secondDate = matchingDays.day2(dayTwoElem.value);
   
-  displayElem.innerHTML = DAY_TEMPLATE({weekdays:matchingDays.context(firstDate, secondDate)});
+  displayElem.innerHTML = DAY_TEMPLATE({
+    weekdays:matchingDays.context(firstDate, secondDate)
+  });
 });
 
 window.addEventListener('DOMContentLoaded', function() {
-  displayElem.innerHTML = DAY_TEMPLATE({weekdays: matchingDays.context()});
+  displayElem.innerHTML = DAY_TEMPLATE({
+    weekdays: matchingDays.context()
+  });
 });

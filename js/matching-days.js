@@ -2,77 +2,53 @@
 function MatchingDays() {
 
     const WEEKDAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-    var date1 = '';
-    var date2 = '';
+    var dayOne = '';
+    var dayTwo = '';
 
     function getDay1(value) {
         if (value !== undefined) {
-        date1 = value;
+            let date = new Date(value);
+            dayOne = WEEKDAYS[date.getDay()];
         }
-        let date = new Date(date1);
-        return WEEKDAYS[date.getDay()];
+        return dayOne;
     }
 
     function getDay2(value) {
         if (value !== undefined){
-        date2 = value;
+            let date = new Date(value);
+            dayTwo = WEEKDAYS[date.getDay()];
         }
-        let date = new Date(date2);
-        return WEEKDAYS[date.getDay()];
+        return dayTwo;
     }
 
     function sameWeekDay() {
-        if (date1 !== undefined && date2 !== undefined) {
-        first = new Date(date1);
-        second = new Date(date2);
-        return first.getDay() == second.getDay();
-        }
-        return false;
+        return dayOne == dayTwo;
     }
 
-    function createContext(dayOne, dayTwo){
-
+    function createContext(d1, d2){
         var context = {};
-        console.log(dayTwo);
         
-        if (dayOne !== undefined || dayTwo !== undefined) {
-            for (let i = 0; i < WEEKDAYS.length; i++) {
-                let current = WEEKDAYS[i];
-                context[current] = {
-                    dayId: current,
-                    dayName: current
+        for (let i = 0; i < WEEKDAYS.length; i++) {
+            let current = WEEKDAYS[i];
+            context[current] = { dayName: current }
+            
+            if (d1 !== undefined && current === d1) {
+                // add style for first date
+                context[current] = Object.assign({isDayOne: true}, context[current]);
+                if (sameWeekDay()) {
+                    // add style for matching date
+                    delete context[current].isDayOne;
+                    context[current] = Object.assign({isSameDay: true}, context[current]);
                 }
-                if (current === dayOne) {
-                    // add style for first date
-                    context[current] = Object.assign({'first': 'red'}, context[current]);
-                    if (sameWeekDay()) {
-                        // add style for matching date
-                        delete context[current].first;
-                        context[current] = Object.assign({'sameDay': 'green'}, context[current]);
-                    }
-                } else if (current === dayTwo) {
-                    // add style for second date
-                    context[current] = Object.assign({'second': 'blue'}, context[current]);
-                    if (sameWeekDay()) {
-                        // add style for matching date
-                        delete context[current].second;
-                        context[current] = Object.assign({'sameDay': 'green'}, context[current]);
-                    }
+            } 
+            else if (d2 !== undefined && current === d2) {
+                // add style for second date
+                context[current] = Object.assign({isDayTwo: true}, context[current]);
+                if (sameWeekDay()) {
+                    // add style for matching date
+                    delete context[current].isDayTwo;
+                    context[current] = Object.assign({isSameDay: true}, context[current]);
                 }
-            }
-            return context;
-        }
-
-        // else just create the default one
-        for (let i = 0; i < matchingDays.weekdays.length; i++) {
-            let current = matchingDays.weekdays[i];
-        
-            context[current] = {
-              dayId: current,
-              dayName: current
-              // first:   // true or false,
-              // second:  // true or false,
-              // sameDay: // true or false
             }
         }
         return context;

@@ -64,7 +64,7 @@ body {
   border-bottom-right-radius: 6px;
 }
 
-.red, .blue, .green {
+.first-date-color, .second-date-color, .match-color {
   color: #fff;
   font-weight: bold;
   padding: 1.3rem;
@@ -74,15 +74,15 @@ body {
   /* transition: all padding 5s; */
 }
 
-.red {
+.first-date-color {
   background: crimson;
 }
 
-.blue {
+.second-date-color {
   background: rgb(22, 94, 189);
 }
 
-.green {
+.match-color {
   background: green;
 }
 
