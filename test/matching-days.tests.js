@@ -47,6 +47,12 @@ describe('Tests for the Matching Days app', function(){
             matching.day2('2018-05-14');
             assert.equal(matching.match(), true);
         });
+        it ('Should return (false) the date1 and date2 do not fall on the same weekday', function(){
+            let matching = MatchingDays();
+            matching.day1('2018-05-07');
+            matching.day2('2018-05-15');
+            assert.notEqual(matching.match(), true);
+        });
     });
     // Context
     describe('Tests the Create Context function', function(){
@@ -68,16 +74,56 @@ describe('Tests for the Matching Days app', function(){
             );
         });
         
+        it('should return context (Object) with (isSameDay) property to true set for Wednesday', function(){
+            
+            let matching = MatchingDays();
+            matching.day1('2018-05-07');
+            matching.day2('2018-05-14');
+            assert.deepEqual(
+                matching.context(), 
+                {
+                    Sunday: {dayName: 'Sunday'}, 
+                    Monday: {dayName: 'Monday', isSameDay: true}, 
+                    Tuesday: {dayName: 'Tuesday'}, 
+                    Wednesday: {dayName: 'Wednesday'}, 
+                    Thursday: {dayName: 'Thursday'}, 
+                    Friday: {dayName: 'Friday'}, 
+                    Saturday: {dayName: 'Saturday'}
+                }
+            );
+        });
+        
         it('should return context (Object) with (isDayOne) property to true set for Monday', function(){
             
             let matching = MatchingDays();
+            matching.day1('2018-05-07');
+
             assert.deepEqual(
-                matching.context('Monday', ''), 
+                matching.context(), 
                 {
                     Sunday: {dayName: 'Sunday'}, 
-                    Monday: {isDayOne: true, dayName: 'Monday'}, 
+                    Monday: {dayName: 'Monday', isDayOne: true}, 
                     Tuesday: {dayName: 'Tuesday'}, 
                     Wednesday: {dayName: 'Wednesday'}, 
+                    Thursday: {dayName: 'Thursday'}, 
+                    Friday: {dayName: 'Friday'}, 
+                    Saturday: {dayName: 'Saturday'}
+                }
+            );
+        });
+        
+        it('should return context (Object) with (isDayTwo) property to true set for Wednesday', function(){
+            
+            let matching = MatchingDays();
+            matching.day2('2018-05-23');
+
+            assert.deepEqual(
+                matching.context(), 
+                {
+                    Sunday: {dayName: 'Sunday'}, 
+                    Monday: {dayName: 'Monday'}, 
+                    Tuesday: {dayName: 'Tuesday'}, 
+                    Wednesday: {dayName: 'Wednesday', isDayTwo: true}, 
                     Thursday: {dayName: 'Thursday'}, 
                     Friday: {dayName: 'Friday'}, 
                     Saturday: {dayName: 'Saturday'}

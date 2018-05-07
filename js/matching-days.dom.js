@@ -13,20 +13,18 @@ var matchingDays = MatchingDays();
  *  ADD EVENT LISTENERS
  *************************************************************/
 dayOneElem.addEventListener('change', function() {
-  var firstDate = matchingDays.day1(dayOneElem.value);
-  var secondDate = matchingDays.day2();
+  matchingDays.day1(dayOneElem.value);
 
   displayElem.innerHTML = DAY_TEMPLATE({
-    weekdays:matchingDays.context(firstDate, secondDate)
+    weekdays:matchingDays.context()
   });
 });
 
 dayTwoElem.addEventListener('change', function() {
-  var firstDate = matchingDays.day1(/*dayOneElem.value*/);
-  var secondDate = matchingDays.day2(dayTwoElem.value);
+  matchingDays.day2(dayTwoElem.value);
   
   displayElem.innerHTML = DAY_TEMPLATE({
-    weekdays:matchingDays.context(firstDate, secondDate)
+    weekdays:matchingDays.context()
   });
 });
 

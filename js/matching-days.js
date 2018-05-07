@@ -25,14 +25,14 @@ function MatchingDays() {
         return dayOne == dayTwo;
     }
 
-    function createContext(d1, d2){
+    function createContext(){
         var context = {};
         
         for (let i = 0; i < WEEKDAYS.length; i++) {
             let current = WEEKDAYS[i];
             context[current] = { dayName: current }
             
-            if (d1 !== undefined && current === d1) {
+            if (dayOne !== undefined && current === dayOne) {
                 // add style for first date
                 context[current] = Object.assign({isDayOne: true}, context[current]);
                 if (sameWeekDay()) {
@@ -41,7 +41,7 @@ function MatchingDays() {
                     context[current] = Object.assign({isSameDay: true}, context[current]);
                 }
             } 
-            else if (d2 !== undefined && current === d2) {
+            else if (dayTwo !== undefined && current === dayTwo) {
                 // add style for second date
                 context[current] = Object.assign({isDayTwo: true}, context[current]);
                 if (sameWeekDay()) {
