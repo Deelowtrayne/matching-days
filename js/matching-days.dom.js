@@ -22,7 +22,7 @@ dayOneElem.addEventListener('change', function() {
 
 dayTwoElem.addEventListener('change', function() {
   matchingDays.day2(dayTwoElem.value);
-  
+
   displayElem.innerHTML = DAY_TEMPLATE({
     weekdays:matchingDays.context()
   });

@@ -19,14 +19,7 @@
     <ul class="weekday-display">
       <script type="text/x-template" class="weekday-template">
         {{#each weekdays}}
-        <li class="weekday
-          {{#if isDayOne}}
-            first-date-color
-          {{else if isDayTwo}}
-            second-date-color
-          {{else if isSameDay}}
-            match-color
-          {{/if}}" id="{{@key}}">{{dayName}}</li>
+        <li class="weekday {{dayOneClass}} {{dayTwoClass}} {{sameDayClass}}" id="{{@key}}">{{dayName}}</li>
         {{/each}}
       </script>
     </ul>

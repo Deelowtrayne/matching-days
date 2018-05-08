@@ -34,20 +34,20 @@ function MatchingDays() {
             
             if (dayOne !== undefined && current === dayOne) {
                 // add style for first date
-                context[current] = Object.assign({isDayOne: true}, context[current]);
+                context[current] = Object.assign({dayOneClass: 'first-date-color'}, context[current]);
                 if (sameWeekDay()) {
                     // add style for matching date
-                    delete context[current].isDayOne;
-                    context[current] = Object.assign({isSameDay: true}, context[current]);
+                    delete context[current].dayOneClass;
+                    context[current] = Object.assign({sameDayClass: 'match-color'}, context[current]);
                 }
             } 
             else if (dayTwo !== undefined && current === dayTwo) {
                 // add style for second date
-                context[current] = Object.assign({isDayTwo: true}, context[current]);
+                context[current] = Object.assign({dayTwoClass: 'second-date-color'}, context[current]);
                 if (sameWeekDay()) {
                     // add style for matching date
-                    delete context[current].isDayTwo;
-                    context[current] = Object.assign({isSameDay: true}, context[current]);
+                    delete context[current].dayTwoClass;
+                    context[current] = Object.assign({sameDayClass: 'match-color'}, context[current]);
                 }
             }
         }
